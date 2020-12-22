@@ -1,0 +1,43 @@
+---
+title: "AACSB Assignment: Portion #3"
+output: 
+html_document
+    toc_depth: 2
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$get(echo = FALSE)
+library(tidyverse)
+library(assessmentAACSB)
+```
+
+**Data**
+
+The following report requires the tuition and diversity data to be joined. Use your code from portion #1 as guidance.
+
+```{r import data}
+# Read in tuition cost and diversity data from the data folder, then inner join them together
+# and assign it to joined_data 
+
+joined_data
+```
+
+
+```{r customize, include = FALSE}
+my_state <- "FL" # can you make this a parameter?
+diversity_my_state <- get_category_by_state(joined_data, my_state)
+```
+
+**Diversity Report: `r my_state`**
+
+```{r table}
+knitr::kable(diversity_my_state)
+```
+
+```{r plot}
+plot_title <- glue::glue("State: {my_state}")
+diversity_my_state %>% 
+  ggplot(aes(x = enrollment, y = category)) %>% 
+  geom_col() %>% 
+  ggtitle(label = plot_title)
+```

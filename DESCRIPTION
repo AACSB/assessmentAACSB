@@ -1,0 +1,7 @@
+Package: assessmentAACSB
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.0
+Author: AACSB International
+Encoding: UTF-8
+LazyData: true
